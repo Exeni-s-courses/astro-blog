@@ -4,8 +4,7 @@ import { siteConfig } from "../config/site-config";
 import MainLayout from "../layouts/MainLayout.astro";
 import TaypedBlogPost from "src/components/TaypedBlogPost.astro";
 
-const blogPosts = await getCollection('blog');
-
+const blogPosts = await getCollection("blog");
 ---
 
 <MainLayout title="Javier's Blog">
@@ -18,12 +17,17 @@ const blogPosts = await getCollection('blog');
         {siteConfig.title}
       </h1>
 
-      <!-- <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-        {posts.map((post) => <BlogPost { ...post } />)}
-      </div> -->
+      <a href="/blog/1">Blog Paginado</a>
+
       <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-        {blogPosts.map((post) => <TaypedBlogPost post={ post } />)}
+        {blogPosts.map((post) => <TaypedBlogPost post={post} />)}
       </div>
     </div>
   </section>
 </MainLayout>
+
+<style>
+  a {
+    @apply text-blue-500 hover:underline;
+  }
+</style>
