@@ -1,5 +1,4 @@
-import { z } from "astro/zod";
-import { defineCollection, reference } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 const blogCollection = defineCollection({
   type: "content",
@@ -16,6 +15,9 @@ const blogCollection = defineCollection({
 
       // Relación
       tags: z.array(z.string()),
+
+      // Boolean
+      isDraft: z.boolean().default(false),
     }),
 });
 
@@ -30,5 +32,5 @@ const authorCollection = defineCollection({
 
 export const collections = {
   blog: blogCollection,
-  author: authorCollection,
+  autor: authorCollection,
 };
